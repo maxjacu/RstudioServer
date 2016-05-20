@@ -22,10 +22,8 @@ press `i` then insert with right mouseclick
 LoadModule proxy_module modules/mod_proxy.so
 LoadModule auth_openidc_module modules/mod_auth_openidc.so
 ```
-Save Changes
-```
-:wq
-```
+Save Changes `:wq`
+
 
 start apache
 `sudo service httpd start`
