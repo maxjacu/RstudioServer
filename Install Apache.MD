@@ -28,9 +28,8 @@ Save Changes `:wq`
 start apache
 `sudo service httpd start`
 
-stop apache
+Optional: stop apache
 `sudo service httpd stop`
-
 
 *Sources:*
 https://github.com/pingidentity/mod_auth_openidc/wiki
