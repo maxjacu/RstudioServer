@@ -22,7 +22,7 @@ Generate the keys
 # Amazon Linux
 ./letsencrypt-auto certonly --standalone -v -d <host.domain.name>
 # Ubuntu
-./letsencrypt-auto certonly --standalone -v -d <host.domain.name> --
+./letsencrypt-auto certonly --standalone -v -d <host.domain.name> --debug
 
 #Follow the instructions
 ```
