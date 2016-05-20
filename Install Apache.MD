@@ -1,5 +1,8 @@
 ## Installation with Amazon Linux
-Prerequisites: [install and configure Shiny Server](https://www.rstudio.com/products/shiny/download-server/)
+Prerequisites: 
+[install and configure Shiny Server](https://www.rstudio.com/products/shiny/download-server/)
+[https with letsencrypt](https://github.com/maxjacu/RstudioServer/blob/master/HTTPs%20with%20Letsencrypt.MD)
+
 
 When you have installed and configured Shiny and you're sure it works, modify your config file so it only serves to 127.0.0.1 (the local machine). This ensures that we don't accidentally expose the open server to the entire Internet.
 
