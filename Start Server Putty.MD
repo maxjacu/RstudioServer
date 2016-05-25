@@ -1,4 +1,18 @@
-To keep a command running in putty even after closing terminal
+#Automatically start server on ec2-restart 
+
+`vi /etc/rc.local`
+
+Add line: 
+```
+[...]
+sudo rstudio-server start
+```
+
+#Start Server in Screen to keep a command running in putty even after closing terminal 
+
+###Notes 
+
+- this is not needed for RStudio-Server
 
 **Create Screen** 
 
