@@ -8,7 +8,7 @@ Add line:
 sudo rstudio-server start
 ```
 
-#Start Server in Screen to keep a command running in putty even after closing terminal 
+##Start Server in Screen to keep a command running in putty even after closing terminal 
 
 ###Notes 
 
