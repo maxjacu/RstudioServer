@@ -8,7 +8,7 @@ Prerequisites:
 Make sure R is installed
 `sudo yum install R`
 
-You'll also need to install the Shiny R package before installing Shiny Server:
+You’ll also need to install the Shiny R package before installing Shiny Server:
 `sudo su - \
 -c "R -e \"install.packages('shiny', repos='https://cran.rstudio.com/')\""`
 
@@ -33,6 +33,7 @@ We can use the text editor Nano to edit the configuration file. Type
 Update shiny.conf to `listen 3838 127.0.0.1;` by making changes to the config.
 You can also copy and paste one of following two example configs:
 
+###Run one App
 ```
 #runs server as user shiny
 run_as shiny;
@@ -52,8 +53,7 @@ server {
 then create myApp folder
 `sudo mkdir /srv/shiny-server/myApp/`
 
-or if you want each user to be able to publish apps in their own home folder
-
+###Host entire shiny-server directory
 ```
 
 # Tell Shiny Server that we want to run as the user whose
@@ -79,9 +79,9 @@ server {
 
   }
 }
-
-
 ```
+
+### Allow each user to publish apps in their own home folder
 
 ```
 # Tell Shiny Server that we want to run as the user whose
@@ -184,7 +184,7 @@ Listen 443 https
 
 #### Save & Restart Apache
 
-Once you’re finished setting up all your Virtual Hosts, save and exit vhosts.conf (`ctrl + x if` you were using Nano) and restart Apache, like so…
+Once youâre finished setting up all your Virtual Hosts, save and exit vhosts.conf (`ctrl + x if` you were using Nano) and restart Apache, like soâ¦
 
 `sudo service httpd restart`
 
