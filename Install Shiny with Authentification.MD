@@ -21,7 +21,8 @@ You will also need to install the Shiny R package before installing Shiny Server
 
 https://github.com/rstudio/shiny-server/issues/188#issuecomment-174785936
 
-`  sudo yum install compat-libffi5`
+`  sudo yum install compat-libffi5` 
+
 `  sudo yum install compat-gmp4`
 
 ## Shiny Configuration
