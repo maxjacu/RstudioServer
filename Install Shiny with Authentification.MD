@@ -5,20 +5,27 @@ Prerequisites:
 
 ## Shiny Installation
 
+Log into Amazon Linux EC2 Instance using SSH
+
 Make sure R is installed
 `sudo yum install R`
 
-You’ll also need to install the Shiny R package before installing Shiny Server:
+You will also need to install the Shiny R package before installing Shiny Server:
 `sudo su - \
 -c "R -e \"install.packages('shiny', repos='https://cran.rstudio.com/')\""`
 
-`wget https://download3.rstudio.org/centos5.9/x86_64/shiny-server-1.4.2.786-rh5-x86_64.rpm
-sudo yum install --nogpgcheck shiny-server-1.4.2.786-rh5-x86_64.rpm`
+` wget https://download3.rstudio.org/centos5.9/x86_64/shiny-server-1.4.2.786-rh5-x86_64.rpm`
+` sudo yum install --nogpgcheck shiny-server-1.4.2.786-rh5-x86_64.rpm`
+
+#### Allow markdown Shiny Apps
+
+https://github.com/rstudio/shiny-server/issues/188#issuecomment-174785936
+
+`  sudo yum install compat-libffi5`
+`  sudo yum install compat-gmp4`
 
 ## Shiny Configuration
 When you have installed and configured Shiny and you're sure it works, modify your config file so it only serves to 127.0.0.1 (the local machine). This ensures that we don't accidentally expose the open server to the entire Internet.
-
-Log into Amazon Linux EC2 Instance using SSH
 
 Shiny Server is mainly configured via the following file: `/etc/shiny-server/shiny-server.conf`
 
@@ -104,11 +111,22 @@ server {
   }
 }
 ```
-Remove previous config with `CTR + K`
+Remove previous config/lines with `CTR + K`
 
 Last step: restart Shiny Server
 
-`sudo restart shiny-server`
+` sudo restart shiny-server` or
+
+` sudo start shiny-server`
+
+### Install packages for user 'shiny'
+
+Source: http://stackoverflow.com/questions/16065805/packages-missing-in-shiny-server
+
+Set a password for the user using `sudo passwd shiny`, now enter and confirm a password
+Switch to the shiny account using: `su - shiny`
+Call up R using $ `R` (without sudo)
+Install the required packages, in this case: `install.packages("plyr")`
 
 ## Apache Installation
 Install `auth_openidc_module`
@@ -184,7 +202,7 @@ Listen 443 https
 
 #### Save & Restart Apache
 
-Once youâre finished setting up all your Virtual Hosts, save and exit vhosts.conf (`ctrl + x if` you were using Nano) and restart Apache, like soâ¦
+Once you're finished setting up all your Virtual Hosts, save and exit vhosts.conf (`ctrl + x if` you were using Nano) and restart Apache, like so:
 
 `sudo service httpd restart`
 
@@ -193,12 +211,12 @@ Once youâre finished setting up all your Virtual Hosts, save and exit vhost
 In your application settings add new allowed callback which is equal to OIDCRedirectURI:
 `OIDCRedirectURI https://<your-website>/auth`
 
-Now, go to OAuth section in advanced settings and change JsonWebToken Token Signature Algorithm to RS256.
+Now, go to OAuth section within your application's 'advanced settings' (see bottom of page) and change JsonWebToken Token Signature Algorithm to RS256.
 
 *Sources:*
 
-https://github.com/pingidentity/mod_auth_openidc/wiki
-http://blog.zwiegnet.com/linux-server/install-mod_proxy-plugin-to-apache-centos/
-https://pkgs.org/centos-6/epel-x86_64/jansson-2.6-1.el6.x86_64.rpm.html
-https://auth0.com/blog/2015/09/24/adding-authentication-to-shiny-open-source-edition/
-http://nouveauframework.org/blog/vhosts-running-multiple-sites-on-a-single-aws-ec2-instance/
+- https://github.com/pingidentity/mod_auth_openidc/wiki
+- http://blog.zwiegnet.com/linux-server/install-mod_proxy-plugin-to-apache-centos/
+- https://pkgs.org/centos-6/epel-x86_64/jansson-2.6-1.el6.x86_64.rpm.html
+- https://auth0.com/blog/2015/09/24/adding-authentication-to-shiny-open-source-edition/
+- http://nouveauframework.org/blog/vhosts-running-multiple-sites-on-a-single-aws-ec2-instance/
