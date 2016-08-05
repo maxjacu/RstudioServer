@@ -27,8 +27,9 @@ Generate the keys
 #Follow the instructions
 ```
 
-All generated keys and issued certificates can be found in `/etc/letsencrypt/live/<host.domain.name>`. Rather than copying, please point your (web) server configuration directly to those files (or create symlinks). During the renewal, `/etc/letsencrypt/live` is updated with the latest necessary files.
+All generated keys and issued certificates can be found in `/etc/letsencrypt/live/<host.domain.name>`. Rather than copying, please point your (web) server configuration directly to those files (or create symlinks). During the renewal, `/etc/letsencrypt/live` is updated with the latest necessary files. 
 [More information directly from letsencrypt](http://letsencrypt.readthedocs.io/en/latest/using.html#where-are-my-certificates)
+
 ##### Debugging 
 In case you have rstudio already installed and configured to run on port 80 you might get an error when setting up letsencrypt. You can use port 443 instead of port 80 to register the certificate.
 
@@ -39,7 +40,7 @@ sudo service httpd stop
 sudo service httpd start
 ```
 
-(Source: Letsencrypt Forum)[https://community.letsencrypt.org/t/cant-host-anything-on-port-80/5250]
+[Source: Letsencrypt Forum](https://community.letsencrypt.org/t/cant-host-anything-on-port-80/5250)
 
 
 ### Renewing the Keys
@@ -64,4 +65,4 @@ pip install requests
 pip install cssselect
 pip install urllib3
 ```
-[Source](http://stackoverflow.com/questions/27440060/how-to-fix-importerror-no-module-named-packages-urllib3)
+[Source: Stackoverflow](http://stackoverflow.com/questions/27440060/how-to-fix-importerror-no-module-named-packages-urllib3)
