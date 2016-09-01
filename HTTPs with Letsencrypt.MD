@@ -59,8 +59,10 @@ Just follow the same step as during key generation
 In case you run into urllib3 'module missing error:
 you might be missing required modules. Install and try above command again
 
+First connect to the instance using SSH e.g. with Putty
 ```
 sudo su
+cd letsencrypt
 pip install requests
 pip install cssselect
 pip install urllib3
